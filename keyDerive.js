@@ -1,8 +1,7 @@
 const bip39 = require('bip39');
 const hdKey = require('ethereumjs-wallet/hdkey');
-const bip32 = require('bip32');
-const bs58 = require('bs58');
-const bs58check = require('bs58check');
+const bip38 = require('bip38');
+const wif = require('wif');
 
 /* Generate 128-bit entropy, create mnemonic from entropy then convert to master seed, create root private key from master seed.
    Mnemonic generation to be replaced with user input for pairing to Trezor/Ledger in NFT Frame App. The code must be offline to prevent leak of keys.*/
