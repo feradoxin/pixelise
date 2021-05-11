@@ -1,12 +1,11 @@
 const bip39 = require('bip39');
 const hdKey = require('ethereumjs-wallet/hdkey');
-const bip38 = require('bip38');
-const wif = require('wif');
 
 /* Generate 128-bit entropy, create mnemonic from entropy then convert to master seed, create root private key from master seed.
    Mnemonic generation to be replaced with user input for pairing to Trezor/Ledger in NFT Frame App. The code must be offline to prevent leak of keys.*/
 const mnemonic = "punch plug gadget noble brush maximum awful bring resource denial flash brand ketchup artefact divorce review taste charge echo asset flee crop click load" //bip39.generateMnemonic("256");
-const seed = bip39.mnemonicToSeedSync(mnemonic);
+const passphrase = "addapasswordhere" // Add passphrase string here. This is the 'Trezor Passphrase'. Add string length check for 12-char or more?
+const seed = bip39.mnemonicToSeedSync(mnemonic, passphrase);
 const isValid = bip39.validateMnemonic(mnemonic);
 const m = hdKey.fromMasterSeed(seed);
 const rootXpub = m.derivePath("m").publicExtendedKey();
